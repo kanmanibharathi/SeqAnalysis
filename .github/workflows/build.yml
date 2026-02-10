@@ -85,7 +85,7 @@ jobs:
           merge-multiple: true
 
       - name: Prepare R Script
-        run: cp SeqAnalysis.R SeqAnalysis.R # Already in repo, just making it available for release
+        run: ls -l SeqAnalysis.R # Verify file exists instead of copying to itself
 
       - name: Generate Release Tag
         id: tag
