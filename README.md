@@ -1,11 +1,11 @@
-# NSeqVerify: A Modern Bioinformatics Suite
+# SeqAnalysis: A Modern Bioinformatics Suite
 
-**NSeqVerify** is a professional-grade, cross-platform bioinformatics application designed for comprehensive sequence analysis, assembly, and classification. It integrates high-performance Python logic with the statistical power of R Shiny to provide a seamless user experience.
+**SeqAnalysis** is a professional-grade, cross-platform bioinformatics application designed for comprehensive sequence analysis, assembly, and classification. It integrates high-performance Python logic with the statistical power of R Shiny to provide a seamless user experience.
 
 ## 🚀 Key Modules & Functionalities
 
 ### 🧬 DNA Sequence Assembly
-NSeqVerify features a powerful, in-house **De Bruijn Graph Assembler** capable of handling complex genomic data.
+SeqAnalysis features a powerful, in-house **De Bruijn Graph Assembler** capable of handling complex genomic data.
 - **Multi-Kmer Analysis**: Iterative assembly across multiple k-mer sizes for higher consensus accuracy.
 - **Graph Simplification**: Advanced algorithms for:
     - **Path Compaction**: Merging linear nodes.
@@ -22,7 +22,7 @@ Streamline your raw NGS data before downstream analysis.
 
 ### 📊 Sequence Classification
 Rapidly identify pathogens or organismal data in your samples.
-- **NSeq-Classifier (nt/aa)**: Native implementation for classifying nucleotide and protein sequences.
+- **SeqAnalysis-Classifier (nt/aa)**: Native implementation for classifying nucleotide and protein sequences.
 - **NCBI BLAST Integration**: (R-Engine) Built-in support for establishing connections to NCBI for remote sample identification.
 
 ### 🎨 Modern single-window GUI
