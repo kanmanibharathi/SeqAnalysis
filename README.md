@@ -1,7 +1,7 @@
 # SeqAnalysis: A Modern Bioinformatics Suite
 **SeqAnalysis** is a high-performance, cross-platform application designed for comprehensive sequence analysis, including assembly, preprocessing, and extracting specific DNA/Protein sequences from large datasets. It features a modern, fluid GUI inspired by macOS and Windows 11 aesthetics.
 
-![License](https://img.shields.io/badge/License-Proprietary-red)
+![License](https://img.shields.io/badge/License-MIT-green)
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![Framework](https://img.shields.io/badge/Framework-PyQt6-emerald)
 
@@ -64,7 +64,7 @@ To run the code from source:
 *   **`requirements.txt`**: Python dependency manifest.
 
 ## ⚖️ License
-This project is proprietary for **One Research Hub**. All rights reserved. Developed by **Dr. Kanmani Bharathi**.
+This project is licensed under the **MIT License**. See the `LICENSE` file for details. Developed by **Dr. Kanmani Bharathi**.
 
 ---
 *Support: support@oneresearchhub.in*
