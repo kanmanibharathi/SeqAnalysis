@@ -886,7 +886,7 @@ class MainWindow(QMainWindow):
         self.main_layout.setSpacing(20)
 
         # Temp path
-        self.temp_output_base = os.path.join(os.getcwd(), "temp_nseqverify", "result")
+        self.temp_output_base = os.path.join(os.getcwd(), "temp_seqanalysis", "result")
         self.generated_files = {}
         self.last_mode = ""
         self.title_label = None # To hold ref
@@ -1251,7 +1251,7 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     # Taskbar icon fix for Windows
     if sys.platform == 'win32':
-        myappid = 'oneresearchhub.nseqverify.v1' 
+        myappid = 'oneresearchhub.seqanalysis.v1' 
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
     app = QApplication(sys.argv)

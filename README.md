@@ -1,73 +1,71 @@
 # SeqAnalysis: A Modern Bioinformatics Suite
+**SeqAnalysis** is a high-performance, cross-platform application designed for comprehensive sequence analysis, including assembly, preprocessing, and extracting specific DNA/Protein sequences from large datasets. It features a modern, fluid GUI inspired by macOS and Windows 11 aesthetics.
 
-**SeqAnalysis** is a professional-grade, cross-platform bioinformatics application designed for comprehensive sequence analysis, assembly, and classification. It integrates high-performance Python logic with the statistical power of R Shiny to provide a seamless user experience.
+![License](https://img.shields.io/badge/License-Proprietary-red)
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![Framework](https://img.shields.io/badge/Framework-PyQt6-emerald)
 
-## 🚀 Key Modules & Functionalities
+## 🚀 Key Features
+*   **Modern UI**: Sleek dark-mode interface with emerald highlights, glassmorphism, and hardware acceleration.
+*   **DNA Sequence Assembly**: Powered by an in-house **De Bruijn Graph Assembler** with path compaction, tip removal, and bubble popping.
+*   **FASTQ Preprocessing**: Bulk extraction and quality filtering of sequencing reads with Phred score analysis and automated trimming.
+*   **Sequence Classification**: Integrated nt/aa classification using native logic and NCBI BLAST (via R-Engine).
+*   **Embedded Assets**: All fonts (Isidora) and icons are embedded directly into the binary for zero-dependency execution.
+*   **Cross-Platform**: Native standalone builds for Windows, macOS, and Linux.
 
-### 🧬 DNA Sequence Assembly
-SeqAnalysis features a powerful, in-house **De Bruijn Graph Assembler** capable of handling complex genomic data.
-- **Multi-Kmer Analysis**: Iterative assembly across multiple k-mer sizes for higher consensus accuracy.
-- **Graph Simplification**: Advanced algorithms for:
-    - **Path Compaction**: Merging linear nodes.
-    - **Tip Removal**: Pruning short, erroneous branches.
-    - **Bubble Popping**: Resolving heterozygous or sequencing error-induced deviations.
-- **Scalable Processing**: Multi-threaded graph construction for memory efficiency.
+## 📥 Download (No Installation Required)
+SeqAnalysis is available as a single, portable executable. You do not need to install Python or any dependencies.
 
-### 🧪 FASTQ Preprocessing
-Streamline your raw NGS data before downstream analysis.
-- **Quality Filtering**: Integrated Phred score analysis to filter low-quality reads.
-- **Read Trimming**: Precision trimming of adapters or low-quality ends.
-- **Subsampling**: Analyze a subset of your data for rapid verification.
-- **Directional Correction**: Optional automated reverse-complementing of reads.
+1.  Go to the **Actions** (or Releases) page on GitHub.
+2.  Download the specialized artifact for your operating system:
+    *   **Windows**: `SeqAnalysis.exe`
+    *   **macOS**: `SeqAnalysis-macos.zip` (Unzip to get `SeqAnalysis.app`)
+    *   **Linux**: `SeqAnalysis-Linux` (Mark as executable: `chmod +x SeqAnalysis-Linux`)
+    *   **R Engine**: `SeqAnalysis.R` (Run via RStudio for statistical analysis)
+3.  **Run**: Just double-click the downloaded file (or run from terminal) to start.
 
-### 📊 Sequence Classification
-Rapidly identify pathogens or organismal data in your samples.
-- **SeqAnalysis-Classifier (nt/aa)**: Native implementation for classifying nucleotide and protein sequences.
-- **NCBI BLAST Integration**: (R-Engine) Built-in support for establishing connections to NCBI for remote sample identification.
+## 🛠️ Cross-Platform Build Instructions
+This project is optimized for automated packaging. No external dependencies are required for the final user.
 
-### 🎨 Modern single-window GUI
-- **Hardware Accelerated**: Built with PyQt6 for a fluid, responsive interface.
-- **Integrated System Logs**: Real-time console tracking within the app for every computation.
-- **Visual Assets**: Fully embedded Isidora High-Fidelity typography and pixel-perfect icons.
-- **Theme Engine**: Automated dark-mode optimization for reduced eye strain during long analysis sessions.
+### 1. 🪟 Windows
+Generates a standalone `.exe` with embedded icon.
+*   **Script**: `SeqAnalysis.spec`
+*   **Command**: `pyinstaller --clean SeqAnalysis.spec`
+*   **Output**: `dist/SeqAnalysis.exe`
 
-## 🛠️ Technical Details
+### 2. 🍎 macOS
+Generates a high-resolution `.app` bundle.
+*   **Command**: `pyinstaller --clean SeqAnalysis.spec`
+*   **Packaging**: `zip -r SeqAnalysis_Mac.zip dist/SeqAnalysis.app`
+*   **Output**: `dist/SeqAnalysis_Mac.zip`
 
-| Feature | Specification |
-| :--- | :--- |
-| **Development** | Dr. Kanmani Bharathi |
-| **Language** | Python 3.10+, R 4.x |
-| **UI Framework** | PyQt6, R Shiny (bslib) |
-| **Core Logic** | Concurrent Futures, De Bruijn Graph (Pure Python Implementation) |
-| **Portability** | Single-file executable (Base64 asset embedding) |
+### 3. 🐧 Linux
+Generates a standalone binary for Ubuntu/Debian/CentOS.
+*   **Dependencies**: Requires `libxcb` and `PyQt6` build tools.
+*   **Command**: `pyinstaller --clean SeqAnalysis.spec`
+*   **Output**: `dist/SeqAnalysis`
 
-## 📦 File Architecture
-- `SeqAnalysis.py`: The Main Python application containing the PyQt6 GUI and Assembler/Preprocessor logic.
-- `SeqAnalysis.R`: The R-Shiny bioinformatics analyzer for statistics and visualization.
-- `SeqAnalysis.spec`: PyInstaller configuration optimized for Windows artifacts.
-- `requirements.txt`: Python package requirements.
-- `icon.ico`: High-Resolution application identification.
+## 🧬 Development Setup
+To run the code from source:
+1.  **Install Requirements**:
+    ```bash
+    pip install PyQt6 requests
+    ```
+2.  **Run Application**:
+    ```bash
+    python SeqAnalysis.py
+    ```
+
+## 📁 Project Structure
+*   **`SeqAnalysis.py`**: The master source code (Logic + UI + Embedded Assets).
+*   **`SeqAnalysis.R`**: The R-Shiny engine for advanced bioinformatics statistics.
+*   **`SeqAnalysis.spec`**: Universal PyInstaller configuration for all platforms.
+*   **`.github/workflows//`**: Multi-OS automated build pipeline (CI/CD).
+*   **`requirements.txt`**: Python dependency manifest.
+
+## ⚖️ License
+This project is proprietary for **One Research Hub**. All rights reserved. Developed by **Dr. Kanmani Bharathi**.
 
 ---
-
-## 🏗️ Building From Source
-To generate a standalone executable for your specific OS:
-1. Ensure Python 3.10+ is installed.
-2. Install dependencies: `pip install -r requirements.txt`
-3. Bundle the app: `pyinstaller SeqAnalysis.spec`
-4. The executable will be in the `/dist` folder (`.exe` for Windows, `.app` or binary for Mac/Linux).
-
----
-
-### Automated Builds
-This repository uses **GitHub Actions** to automatically build binaries for **Windows, macOS, and Linux**. After the build completes, you can download the following from the **"Actions"** tab:
-*   **`SeqAnalysis`**: Contains the Windows `.exe`.
-*   **`SeqAnalysis-macos`**: Contains the macOS `.app` (in a `.zip`).
-*   **`SeqAnalysis-Linux`**: Contains the standalone Linux binary.
-*   **`SeqAnalysis.R`**: The core bioinformatics analysis script.
-
----
-
-### Developed by **One Research Hub**
 *Support: support@oneresearchhub.in*
 *Copyright © 2026 ONE RESEARCH HUB. ALL RIGHTS RESERVED*
