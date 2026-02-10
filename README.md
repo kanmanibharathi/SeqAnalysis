@@ -60,7 +60,11 @@ To generate a standalone executable for your specific OS:
 ---
 
 ### Automated Builds
-This repository uses **GitHub Actions** to automatically build binaries for **Windows, macOS, and Linux** on every push. You can find these in the "Actions" tab or "Releases" section once configured.
+This repository uses **GitHub Actions** to automatically build binaries for **Windows, macOS, and Linux**. After the build completes, you can download the following from the **"Actions"** tab:
+*   **`SeqAnalysis`**: Contains the Windows `.exe`.
+*   **`SeqAnalysis-macos`**: Contains the macOS `.app` (in a `.zip`).
+*   **`SeqAnalysis-Linux`**: Contains the standalone Linux binary.
+*   **`SeqAnalysis.R`**: The core bioinformatics analysis script.
 
 ---
 

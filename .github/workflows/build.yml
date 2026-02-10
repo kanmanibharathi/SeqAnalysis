@@ -40,7 +40,9 @@ jobs:
 
     - name: Prepare Artifacts (Windows)
       if: matrix.os == 'windows-latest'
-      run: echo "ARTIFACT_PATH=dist/SeqAnalysis.exe" >> $GITHUB_ENV
+      run: |
+        echo "ARTIFACT_PATH=dist/SeqAnalysis.exe" >> $GITHUB_ENV
+        echo "UPLOAD_NAME=SeqAnalysis" >> $GITHUB_ENV
       shell: bash
 
     - name: Prepare Artifacts (MacOS)
@@ -49,18 +51,28 @@ jobs:
         # Zip the .app for macOS
         cd dist
         zip -r SeqAnalysis_Mac.zip SeqAnalysis.app || zip -r SeqAnalysis_Mac.zip SeqAnalysis
+        cd ..
         echo "ARTIFACT_PATH=dist/SeqAnalysis_Mac.zip" >> $GITHUB_ENV
+        echo "UPLOAD_NAME=SeqAnalysis-macos" >> $GITHUB_ENV
       shell: bash
 
     - name: Prepare Artifacts (Linux)
       if: matrix.os == 'ubuntu-latest'
       run: |
-        mv dist/SeqAnalysis dist/SeqAnalysis_Linux
-        echo "ARTIFACT_PATH=dist/SeqAnalysis_Linux" >> $GITHUB_ENV
+        mv dist/SeqAnalysis dist/SeqAnalysis_Linux_Binary
+        echo "ARTIFACT_PATH=dist/SeqAnalysis_Linux_Binary" >> $GITHUB_ENV
+        echo "UPLOAD_NAME=SeqAnalysis-Linux" >> $GITHUB_ENV
       shell: bash
 
-    - name: Upload Artifact
+    - name: Upload Main Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: SeqAnalysis-${{ matrix.os }}
+        name: ${{ env.UPLOAD_NAME }}
         path: ${{ env.ARTIFACT_PATH }}
+
+    - name: Upload R Script
+      if: matrix.os == 'windows-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: SeqAnalysis.R
+        path: SeqAnalysis.R
