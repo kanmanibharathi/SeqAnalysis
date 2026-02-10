@@ -51,11 +51,16 @@ Rapidly identify pathogens or organismal data in your samples.
 ---
 
 ## 🏗️ Building From Source
-To generate the standalone executable:
+To generate a standalone executable for your specific OS:
 1. Ensure Python 3.10+ is installed.
 2. Install dependencies: `pip install -r requirements.txt`
 3. Bundle the app: `pyinstaller SeqAnalysis.spec`
-4. Find your executable in the `/dist` folder.
+4. The executable will be in the `/dist` folder (`.exe` for Windows, `.app` or binary for Mac/Linux).
+
+---
+
+### Automated Builds
+This repository uses **GitHub Actions** to automatically build binaries for **Windows, macOS, and Linux** on every push. You can find these in the "Actions" tab or "Releases" section once configured.
 
 ---
 
