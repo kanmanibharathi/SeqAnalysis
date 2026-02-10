@@ -1,43 +1,64 @@
-# NSeqVerify
-**A Modern, High-Performance Sequence Analysis & Verification Suite**
+# NSeqVerify: A Modern Bioinformatics Suite
 
-**NSeqVerify** is a cross-platform bioinformatics utility designed for streamlined sequence processing and verification. By blending the high-performance logic of **Python (PyQt6)** with the specialized analysis capabilities of **R (Shiny)**, NSeqVerify provides a comprehensive environment for both rapid data exploration and complex assembly workflows.
+**NSeqVerify** is a professional-grade, cross-platform bioinformatics application designed for comprehensive sequence analysis, assembly, and classification. It integrates high-performance Python logic with the statistical power of R Shiny to provide a seamless user experience.
 
-## 🚀 Key Features
+## 🚀 Key Modules & Functionalities
 
-### 1. Dual-Engine Analysis
-*   **Python Power**: A sleek, hardware-accelerated GUI built with PyQt6 for intense tasks like De Bruijn Graph assembly and local FASTQ preprocessing.
-*   **R Integration**: Embedded R Shiny logic for sophisticated bioinformatics visualizations and statistical sequence metrics.
+### 🧬 DNA Sequence Assembly
+NSeqVerify features a powerful, in-house **De Bruijn Graph Assembler** capable of handling complex genomic data.
+- **Multi-Kmer Analysis**: Iterative assembly across multiple k-mer sizes for higher consensus accuracy.
+- **Graph Simplification**: Advanced algorithms for:
+    - **Path Compaction**: Merging linear nodes.
+    - **Tip Removal**: Pruning short, erroneous branches.
+    - **Bubble Popping**: Resolving heterozygous or sequencing error-induced deviations.
+- **Scalable Processing**: Multi-threaded graph construction for memory efficiency.
 
-### 2. Advanced Assembler & Logic
-*   **In-House De Bruijn Graph**: Custom implementation for sequence assembly, including path compaction, tip removal, and bubble popping for high-fidelity consensus sequences.
-*   **Sequence Verification**: Real-time validation of nucleotide data, including reverse complementation, GC content analysis, and quality score aggregation.
+### 🧪 FASTQ Preprocessing
+Streamline your raw NGS data before downstream analysis.
+- **Quality Filtering**: Integrated Phred score analysis to filter low-quality reads.
+- **Read Trimming**: Precision trimming of adapters or low-quality ends.
+- **Subsampling**: Analyze a subset of your data for rapid verification.
+- **Directional Correction**: Optional automated reverse-complementing of reads.
 
-### 3. FASTQ Preprocessing
-*   High-speed parsing and filtering of raw sequencing data.
-*   Automated quality control and trimming workflows optimized for large-scale datasets.
+### 📊 Sequence Classification
+Rapidly identify pathogens or organismal data in your samples.
+- **NSeq-Classifier (nt/aa)**: Native implementation for classifying nucleotide and protein sequences.
+- **NCBI BLAST Integration**: (R-Engine) Built-in support for establishing connections to NCBI for remote sample identification.
 
-### 4. Zero-Dependency Portability (Build Ready)
-*   **Asset Embedding**: High-fidelity fonts (Isidora) and icons are embedded directly into the source as Base64 data, ensuring a "Single-File" experience without broken paths or missing assets.
-*   **Cross-Platform**: Ready for distribution as executable binaries (`.exe`, `.app`, and Linux) using PyInstaller.
+### 🎨 Modern single-window GUI
+- **Hardware Accelerated**: Built with PyQt6 for a fluid, responsive interface.
+- **Integrated System Logs**: Real-time console tracking within the app for every computation.
+- **Visual Assets**: Fully embedded Isidora High-Fidelity typography and pixel-perfect icons.
+- **Theme Engine**: Automated dark-mode optimization for reduced eye strain during long analysis sessions.
 
-## 🛠️ Technology Stack
-*   **Frontend**: PyQt6 (Python), R Shiny
-*   **Logic**: Python 3.10+ (Collections, Concurrent Futures, De Bruijn Graph)
-*   **Visualization**: R (bslib, httr, shiny)
-*   **Build Pipeline**: PyInstaller
+## 🛠️ Technical Details
 
-## 📦 File Structure
-*   **`SeqAnalysis.py`**: The core application entry point and GUI logic.
-*   **`SeqAnalysis.R`**: The bioinformatics analysis engine.
-*   **`SeqAnalysis.spec`**: Optimized PyInstaller build configuration for local executables.
-*   **`requirements.txt`**: Minimalist dependency manifest.
+| Feature | Specification |
+| :--- | :--- |
+| **Development** | Dr. Kanmani Bharathi |
+| **Language** | Python 3.10+, R 4.x |
+| **UI Framework** | PyQt6, R Shiny (bslib) |
+| **Core Logic** | Concurrent Futures, De Bruijn Graph (Pure Python Implementation) |
+| **Portability** | Single-file executable (Base64 asset embedding) |
+
+## 📦 File Architecture
+- `SeqAnalysis.py`: The Main Python application containing the PyQt6 GUI and Assembler/Preprocessor logic.
+- `SeqAnalysis.R`: The R-Shiny bioinformatics analyzer for statistics and visualization.
+- `SeqAnalysis.spec`: PyInstaller configuration optimized for Windows artifacts.
+- `requirements.txt`: Python package requirements.
+- `icon.ico`: High-Resolution application identification.
 
 ---
 
-### How to Build
-To generate a standalone executable for your OS:
-```bash
-pip install -r requirements.txt
-pyinstaller SeqAnalysis.spec
-```
+## 🏗️ Building From Source
+To generate the standalone executable:
+1. Ensure Python 3.10+ is installed.
+2. Install dependencies: `pip install -r requirements.txt`
+3. Bundle the app: `pyinstaller SeqAnalysis.spec`
+4. Find your executable in the `/dist` folder.
+
+---
+
+### Developed by **One Research Hub**
+*Support: support@oneresearchhub.in*
+*Copyright © 2026 ONE RESEARCH HUB. ALL RIGHTS RESERVED*
