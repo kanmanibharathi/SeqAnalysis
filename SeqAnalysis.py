@@ -908,7 +908,9 @@ class MainWindow(QMainWindow):
         # Use a scroll area for the main content to handle small screens
         self.scroll_area = QScrollArea()
         self.scroll_area.setWidgetResizable(True)
-        self.scroll_area.setStyleSheet("background: transparent; border: none;")
+        self.scroll_area.setObjectName("MainScrollArea")
+        self.scroll_area.setStyleSheet("#MainScrollArea { background: transparent; border: none; }")
+        self.scroll_area.viewport().setStyleSheet("background: transparent; border: none;")
         
         content_wrapper = QWidget()
         content_wrapper_layout = QVBoxLayout(content_wrapper)
