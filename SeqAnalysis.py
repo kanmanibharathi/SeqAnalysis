@@ -805,6 +805,22 @@ QScrollArea {{
     border: none;
     background-color: transparent;
 }}
+QScrollArea > QWidget > QWidget {{
+    background-color: transparent;
+}}
+QScrollArea QScrollBar:vertical {{
+    background: {COLORS['bg_dark']};
+    width: 10px;
+    margin: 0px;
+}}
+QScrollArea QScrollBar::handle:vertical {{
+    background: {COLORS['secondary']};
+    min-height: 20px;
+    border-radius: 5px;
+}}
+QScrollArea QScrollBar::add-line:vertical, QScrollArea QScrollBar::sub-line:vertical {{
+    height: 0px;
+}}
 """
 
 class WorkerSignals(QObject):
@@ -909,8 +925,6 @@ class MainWindow(QMainWindow):
         self.scroll_area = QScrollArea()
         self.scroll_area.setWidgetResizable(True)
         self.scroll_area.setObjectName("MainScrollArea")
-        self.scroll_area.setStyleSheet("#MainScrollArea { background: transparent; border: none; }")
-        self.scroll_area.viewport().setStyleSheet("background: transparent; border: none;")
         
         content_wrapper = QWidget()
         content_wrapper_layout = QVBoxLayout(content_wrapper)
