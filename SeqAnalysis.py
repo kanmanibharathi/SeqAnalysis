@@ -869,7 +869,18 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("SeqAnalysis")
-        self.setFixedSize(1000, 750)
+        # Dynamic sizing to fit within screen space
+        screen = QApplication.primaryScreen().availableGeometry()
+        width = min(1000, screen.width() * 0.95)
+        height = min(750, screen.height() * 0.95)
+        self.resize(int(width), int(height))
+        self.setMinimumSize(800, 600)
+
+        # Center on screen
+        qr = self.frameGeometry()
+        cp = screen.center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
         # Set Icon
         if 'ICON_DATA' in globals():
             pixmap = QPixmap()
@@ -894,7 +905,11 @@ class MainWindow(QMainWindow):
         self.setup_ui()
 
     def setup_ui(self):
-        # Wrapper for content (to add margins back)
+        # Use a scroll area for the main content to handle small screens
+        self.scroll_area = QScrollArea()
+        self.scroll_area.setWidgetResizable(True)
+        self.scroll_area.setStyleSheet("background: transparent; border: none;")
+        
         content_wrapper = QWidget()
         content_wrapper_layout = QVBoxLayout(content_wrapper)
         content_wrapper_layout.setContentsMargins(20, 20, 20, 20)
@@ -989,8 +1004,9 @@ class MainWindow(QMainWindow):
         
         content_wrapper_layout.addLayout(btn_layout)
         
-        # Add wrapper to main layout
-        self.main_layout.addWidget(content_wrapper)
+        # Add wrapper to scroll area and scroll area to main layout
+        self.scroll_area.setWidget(content_wrapper)
+        self.main_layout.addWidget(self.scroll_area)
 
         # Footer Area
         # 1. System Status Mini-Bar
